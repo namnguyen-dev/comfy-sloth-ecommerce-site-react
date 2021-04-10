@@ -12,9 +12,20 @@ const Contact = () => {
             numquam enim, eos tempora dolores quis maxime distinctio illum
             temporibus.
           </p>
-          <form className="contact-form">
-            <input type="text" className='form-input' placeholder='enter email'/>
-            <button type="submit" className='submit-btn'>subscribe</button>
+          <form
+            className="contact-form"
+            action="https://formspree.io/f/xqkwkwwy"
+            method="POST"
+          >
+            <input
+              type="text"
+              className="form-input"
+              placeholder="enter email"
+              name="_replyto"
+            />
+            <button type="submit" className="submit-btn">
+              subscribe
+            </button>
           </form>
         </div>
       </div>

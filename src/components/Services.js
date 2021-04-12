@@ -18,13 +18,15 @@ const Services = () => {
           </p>
         </article>
         <div className="services-center">
-          {services.map((service)=> {
-            const {id,title, text,icon}=service
-            return <article className="service">
-              <span className="icon">{icon}</span>
-              <h4>{title}</h4>
-              <p>{text}</p>
-            </article>
+          {services.map(service => {
+            const { id, title, text, icon } = service;
+            return (
+              <article className="service" key={id}>
+                <span className="icon">{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            );
           })}
         </div>
       </div>

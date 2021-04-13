@@ -10,7 +10,7 @@ const Sort = () => {
     setListView,
     updateSort,sort
   } = useFilterContext();
-  console.log(sort);
+ 
   return (
     <Wrapper>
       <div className="btn-container">

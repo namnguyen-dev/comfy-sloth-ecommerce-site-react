@@ -11,10 +11,15 @@ import {
 
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
+    let maxPrice = action.payload.map(p => p.price);
+    console.log(maxPrice);
+    maxPrice = Math.max(...maxPrice);
+    console.log(maxPrice);
     return {
       ...state,
       all_products: [...action.payload],
       filtered_products: [...action.payload],
+      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
     };
   }
   if (action.type === SET_GRIDVIEW) {
@@ -41,9 +46,9 @@ const filter_reducer = (state, action) => {
       });
     }
     if (sort === 'name-z') {
-       tempProducts = tempProducts.sort((a, b) => {
-         return b.name.localeCompare(a.name); 
-       });
+      tempProducts = tempProducts.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
     }
 
     return { ...state, filtered_products: tempProducts };

@@ -6,7 +6,7 @@ import { FaCheck } from 'react-icons/fa';
 
 const Filters = () => {
   const {
-    filters: { text, category, company, color, min_price, max_price, shipping },
+    filters: { text, category, company, color,price, min_price, max_price, shipping },
     updateFilters,
     clearFilters,
     all_products,
@@ -77,12 +77,22 @@ const Filters = () => {
           {/* Colors */}
           <div className="form-control">
             <h5>Colors</h5>
-            <div className='colors'>
+            <div className="colors">
               {colors.map((c, index) => {
-                if(c === 'all') {
-                  return <button key ={index} name='color' onClick={updateFilters} data-color='all' className={`${color === 'all' ? 'all-btn active': 'all-btn'}`}>
-                    all
-                  </button>
+                if (c === 'all') {
+                  return (
+                    <button
+                      key={index}
+                      name="color"
+                      onClick={updateFilters}
+                      data-color="all"
+                      className={`${
+                        color === 'all' ? 'all-btn active' : 'all-btn'
+                      }`}
+                    >
+                      all
+                    </button>
+                  );
                 }
                 return (
                   <button
@@ -102,6 +112,13 @@ const Filters = () => {
             </div>
           </div>
           {/* end of Colors */}
+          {/* Price */}
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input type="range" name="price" onChange={updateFilters} min={min_price} max={max_price} value={price} />
+          </div>
+          {/* End of Price */}
         </form>
       </div>
     </Wrapper>

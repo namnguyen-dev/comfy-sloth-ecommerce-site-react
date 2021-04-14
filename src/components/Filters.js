@@ -12,10 +12,10 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
-  const categories = getUniqueValues(all_products,'category')
-  const companies = getUniqueValues(all_products,'company')
-  const colors = getUniqueValues(all_products,'colors')
-  console.log(colors);
+  const categories = getUniqueValues(all_products, 'category');
+  const companies = getUniqueValues(all_products, 'company');
+  const colors = getUniqueValues(all_products, 'colors');
+  console.log(categories);
   return (
     <Wrapper>
       <div className="content">
@@ -32,6 +32,58 @@ const Filters = () => {
             />
           </div>
           {/* end of search input */}
+          {/* category */}
+          <div className="form-control">
+            <h5>Category</h5>
+            <div>
+              {categories.map((cat, index) => {
+                return (
+                  <button
+                    key={index}
+                    name="category"
+                    type="button"
+                    onClick={updateFilters}
+                    className={`${
+                      cat.toLowerCase() === category ? 'active' : null
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* end of category */}
+          {/* Companies */}
+          <div className="form-control">
+            <h5>Company</h5>
+            <select
+              name="company"
+              value={company}
+              onChange={updateFilters}
+              className="company"
+            >
+              {companies.map((company, index) => {
+                return (
+                  <option value={company} key={index}>
+                    {company}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* End of Companies */}
+
+          {/* end of category */}
+          <div className="form-control">
+            <h5>Colors</h5>
+            <select>
+              {colors.map((color, index) => {
+                return <option key={index}>{color}</option>;
+              })}
+            </select>
+          </div>
+          {/* end of category */}
         </form>
       </div>
     </Wrapper>

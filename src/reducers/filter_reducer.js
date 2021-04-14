@@ -57,7 +57,65 @@ const filter_reducer = (state, action) => {
     return { ...state, filters: { ...state.filters, [name]: value } };
   }
   if (action.type === FILTER_PRODUCTS) {
-    return { ...state };
+    const {
+      text,
+      company,
+      color,
+      category,
+      min_price,
+      max_price,
+      price,
+      shipping,
+    } = state.filters;
+    const { all_products } = state;
+
+    let tempProducts = [...all_products];
+
+    // Filtering logic
+
+    // Text
+    if (text) {
+      tempProducts = tempProducts.filter(product => {
+        return product.name.toLowerCase().startsWith(text);
+      });
+    }
+
+    // Category
+    if (category !== 'all') {
+      tempProducts = tempProducts.filter(product => {
+        return product.category === category;
+      });
+    }
+
+    // Company
+    if (company !== 'all') {
+      tempProducts = tempProducts.filter(product => {
+        return product.company === company;
+      });
+    }
+
+    // Color
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter(product => {
+        return product.colors.find(c => c === color);
+      });
+    }
+
+    // Price
+    if (price !== max_price) {
+      tempProducts = tempProducts.filter(product => {
+        return product.price <= price;
+      });
+    }
+
+    // Shipping
+    if (shipping) {
+      tempProducts = tempProducts.filter(product => {
+        return product.shipping === true;
+      });
+    }
+
+    return { ...state, filtered_products: tempProducts };
   }
   if (action.type === CLEAR_FILTERS) {
     return {

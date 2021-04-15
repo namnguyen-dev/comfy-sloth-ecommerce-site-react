@@ -12,7 +12,7 @@ import {
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart');
   if (cart) {
-    return JSON.parse(cart);
+    return JSON.parse(localStorage.getItem('cart'));
   } else {
     return [];
   }
@@ -37,20 +37,21 @@ export const CartProvider = ({ children }) => {
 
   // remove item
   const removeItem = id => {
-    dispatch({type:REMOVE_CART_ITEM,payload:id})
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
   };
 
   // toggle amount
   const toggleAmount = (id, value) => {
-
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
   };
 
   // clear cart
   const clearCart = () => {
-    dispatch({type:CLEAR_CART})
+    dispatch({ type: CLEAR_CART });
   };
 
   useEffect(() => {
+    dispatch({type:COUNT_CART_TOTALS})
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 

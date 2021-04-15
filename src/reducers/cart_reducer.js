@@ -1,6 +1,7 @@
 import {
   ADD_TO_CART,
   CLEAR_CART,
+  CLEAR_FILTERS,
   COUNT_CART_TOTALS,
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
@@ -35,6 +36,15 @@ const cart_reducer = (state, action) => {
       };
       return { ...state, cart: [...state.cart, newItem] };
     }
+  }
+  if(action.type === REMOVE_CART_ITEM){
+    const tempCart = state.cart.filter((item)=> {
+      return item.id !== action.payload
+    })
+    return {...state,cart:tempCart}
+  }
+  if(action.type=CLEAR_CART){
+    return {...state,cart:[]}
   }
   throw new Error(`No Matching "${action.type}" - action type`);
 };

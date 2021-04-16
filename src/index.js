@@ -10,12 +10,19 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { Cart } from './pages';
 
 ReactDOM.render(
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>,
+  <Auth0Provider
+    domain="dev-g45g4laa.jp.auth0.com"
+    clientId="29ZbyxgUO3HWl49W0LHTir1EeXI5CTHI"
+    redirectUri={window.location.origin}
+    cacheLocation="localstorage"
+  >
+    <ProductsProvider>
+      <FilterProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </FilterProvider>
+    </ProductsProvider>
+  </Auth0Provider>,
   document.getElementById('root')
 );

@@ -10,11 +10,10 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
   const increase = () => {
     toggleAmount(id, 'inc');
   };
-  
   const decrease = () => {
     toggleAmount(id, 'dec');
   };
-
+  
   return (
     <Wrapper>
       <div className="title">

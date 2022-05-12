@@ -1,4 +1,4 @@
-# Vietnam Travel
+# Comfy Sloth e-commerce
 
 https://comfy-sloth-react-project.netlify.app/ is an e-commerce website where visitors can shop luxury furniture and make payment by Stripe.
 

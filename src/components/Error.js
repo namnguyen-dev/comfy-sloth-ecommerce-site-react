@@ -1,7 +1,7 @@
 import React from 'react';
 const Error = () => {
   return (
-    <div className="section section-center text-center">
+    <div className="section section-center text-center text-transform">
       <h2>there was an error...</h2>
     </div>
   );
